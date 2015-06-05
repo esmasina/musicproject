@@ -1,5 +1,5 @@
 <?php namespace App\Http\Controllers;
-
+use Illuminate\Http\Request;
 class HomeController extends Controller {
 
 	/*
@@ -37,4 +37,18 @@ class HomeController extends Controller {
 	{
 		return view('about');
 	}
+         public function newform()
+	{
+             
+		return view('new');
+	}
+        public function contact()
+	{
+		return view('contact');
+	}
+         public function store()
+    {
+             return('hi');
+    }
+
 }
