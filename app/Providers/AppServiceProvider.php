@@ -1,6 +1,9 @@
 <?php namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Route;
+use Auth;
+use Redirect;
 
 class AppServiceProvider extends ServiceProvider {
 
@@ -11,7 +14,19 @@ class AppServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		//
+		//Filters
+		Route::filter('currentUser', function($route)
+		{
+			//If guest - redirect home
+				if (Auth::guest()) return Redirect::home();
+				//If wrong guy - redirect home
+				if (Auth::user()->name !==$route->parameter('profile'))
+				{
+					return Redirect::home();
+				}
+		});
+	
+
 	}
 
 	/**

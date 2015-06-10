@@ -8,6 +8,7 @@
 <script type="text/javascript" src="http://getbootstrap.com/dist/js/bootstrap.js"></script>
 <link type="text/css" rel="stylesheet" href="http://getbootstrap.com/dist/css/bootstrap.css"/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="csrf-token" content="{{ csrf_token() }}" />
 <title>Music touch</title>
 <link href="{{ asset('css/style.css')}}" type="text/css" rel="stylesheet" />
 
@@ -36,15 +37,21 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar-collapse-4">
           <ul class="nav navbar-nav">
-            <li class="navm"><a href="#">Home</a></li>
+            <li class="navm"><a href="/">Home</a></li>
             <li class="divider-vertical "></li>
             <li class="navm"><a href="#">Explore</a></li>
             <li class="divider-vertical "></li>
             <li class="navm"><a href="#">About</a></li>
             <li class="divider-vertical "></li>
-            <li class="navm"><a href="#">Contact</a></li>
+            @if (Auth::guest())
+            <li class="navm"><a href="/register">Register</a></li>
             <li class="divider-vertical "></li>
-            <li class="navm"><a href="#">Join Us</a></li>
+            <li class="navm"><a href="/login">Login</a></li>
+            @else
+            <li class="navm">{!! link_to('/'.Auth::user()->name, 'Profile') !!}</li>
+            <li class="divider-vertical "></li>
+            <li class="navm"><a href="/logout">Logout</a></li>
+            @endif
           </ul>        
           </ul>
         </div><!-- /.navbar-collapse -->
