@@ -46,6 +46,23 @@ class HomeController extends Controller {
 	{
 		return view('contact');
 	}
+        
+        public function storeConnect(Request $request)
+	{
+            $this->validate($request,
+                [
+                   'name' => 'required',
+    'email' => 'required|email',
+    'message' => 'required',
+                  ]
+                
+           
+                );
+     
+                return Redirect('contact')
+      ->with('message', 'Thanks for contacting us!');
+
+	}
          public function store()
     {
              return('hi');

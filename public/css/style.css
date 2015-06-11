@@ -25,6 +25,10 @@ padding: 0; margin: 0;}
 .navbar li a { color: #fff !important;
 font-size: 15px;
 } 
+label
+{
+    color:white;
+}
 
 body {
 font-family: 'Ubuntu', sans-serif;

@@ -3,36 +3,45 @@
 @section('content')
 <div class="container">
 <div class="row">
+        @if(Session::has('message'))
+        <div class="alert alert-info">
+         {{Session::get('message')}}
+        </div>
+        @endif        
            <div class="col-md-4"></div>
    <div class=" col-md-4 text-center center-block">
               <div class="form-wrap">
                 <h2>Contact us</h2>
+                <hr>
+               
                 <ul>
     @foreach($errors->all() as $error)
-        <li>{{ $error }}</li>
+    <li style="color:white;font-weight: bold;">{{ $error }}</li>
     @endforeach
 </ul>
+      
+
 {!! Form::open() !!}
 <div class="form-group">
-    {!! Form::label('Your Name') !!}
+     {!! Form::label('name','Your Name') !!}
     {!! Form::text('name', null, 
-        array('required', 
+        array( 
               'class'=>'form-control', 
               'placeholder'=>'Your name')) !!}
 </div>
 
 <div class="form-group">
-    {!! Form::label('Your E-mail Address') !!}
+    {!! Form::label('email','Your E-mail Address') !!}
     {!! Form::text('email', null, 
-        array('required', 
+        array(
               'class'=>'form-control', 
               'placeholder'=>'Your e-mail address')) !!}
 </div>
 
 <div class="form-group">
-    {!! Form::label('Your Message') !!}
+    {!! Form::label('message','Your Message') !!}
     {!! Form::textarea('message', null, 
-        array('required', 
+        array( 
               'class'=>'form-control', 
               'placeholder'=>'Your message')) !!}
 </div>
