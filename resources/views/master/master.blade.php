@@ -48,9 +48,16 @@
             <li class="divider-vertical "></li>
             <li class="navm"><a href="/login">Login</a></li>
             @else
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+               <img src="{{ asset('http://www.gravatar.com/avatar/?s=20{!! md5(Auth::user->email)!!}')}}"></img>
+              {!! Auth::user()->name !!} <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu nav" role="menu">
             <li class="navm">{!! link_to('/'.Auth::user()->name, 'Profile') !!}</li>
-            <li class="divider-vertical "></li>
             <li class="navm"><a href="/logout">Logout</a></li>
+            </ul>
+          </li>
             @endif
           </ul>        
           </ul>
@@ -69,8 +76,6 @@
     <hr>
 </div>
 </div>
-
-
 
 <!-- End your code here -->
 <script type="text/javascript" src="js/script.js"></script>

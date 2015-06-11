@@ -26,6 +26,7 @@ padding: 0; margin: 0;}
 font-size: 15px;
 } 
 
+
 body {
 font-family: 'Ubuntu', sans-serif;
 background: url('../images/back.jpg') no-repeat center center;
@@ -103,6 +104,7 @@ border-right: 1px solid #ffffff;
     color: #fff;
     background-color: #1975FF;
 }
+
 
 #social:hover {
     			-webkit-transform:scale(1.1); 

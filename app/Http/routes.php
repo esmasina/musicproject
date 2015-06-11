@@ -1,6 +1,7 @@
 <?php
 #Home
-Route::get('/', ['as' => 'home', 'uses' => 'PagesController@index']);
+Route::get('users', ['as' => 'users', 'uses' => 'HomeController@allusers']);
+Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
 Route::get('contact', 'HomeController@contact');
 Route::get('new', 'HomeController@newform');
 Route::post('contact', 'HomeController@store');
