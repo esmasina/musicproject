@@ -3,8 +3,7 @@
 Route::get('users', ['as' => 'users', 'uses' => 'HomeController@allusers']);
 Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
 Route::get('contact', 'HomeController@contact');
-Route::get('new', 'HomeController@newform');
-Route::post('contact', 'HomeController@store');
+Route::post('contact', 'HomeController@storeConnect');
 
 #Registration
 Route::get('/register', 'RegController@create');
