@@ -137,7 +137,6 @@ return [
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Html\HtmlServiceProvider',
 		'Barryvdh\Debugbar\ServiceProvider',
-		'PragmaRX\Tracker\Vendor\Laravel\ServiceProvider',
 
             
 
@@ -204,7 +203,6 @@ return [
 	  	'Form' => 'Illuminate\Html\FormFacade',
         'HTML' => 'Illuminate\Html\HtmlFacade',
         'Debugbar' => 'Barryvdh\Debugbar\Facade',
-        'Tracker' => 'PragmaRX\Tracker\Vendor\Laravel\Facade',
 	],
 
 ];

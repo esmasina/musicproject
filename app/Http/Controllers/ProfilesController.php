@@ -6,9 +6,13 @@ use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Models\User;
 use App\Models\Profile;
+use App\Models\Visitors;
+use Auth;
 use Redirect;
 use Input;
 use View;
+use DB;
+
 
 class ProfilesController extends Controller {
 
@@ -27,6 +31,7 @@ class ProfilesController extends Controller {
 	{
 		try
 		{
+		
 		 $user = User::with('profile')
 		 ->wherename($name)
 		 ->firstOrFail();
@@ -36,8 +41,20 @@ class ProfilesController extends Controller {
 		{
             return Redirect::home();
 		}
-		
+		if (Auth::guest())
+		{
 		return View::make('profiles.show')->withUser($user);
+		}
+	    else{
+	   $visitor = Auth::user()->name;
+	   $owner = $user->id;
+       //$input = array($visitor, $owner);
+       //Visitors::create($input);
+       $values = array('name' => $visitor,'user_id' => $owner);
+       DB::table('visitors')->insert($values);
+       return View::make('profiles.show')->withUser($user);
+	    }
+
 	}
 
 
