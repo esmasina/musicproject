@@ -49,8 +49,6 @@ class User extends Model implements  AuthenticatableContract, CanResetPasswordCo
 	}
 
 
-
-
 	public function thisUser()
 	{
 		if (Auth::guest()) return false;

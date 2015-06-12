@@ -4,7 +4,7 @@ use Eloquent;
 class Visitors extends Eloquent {
 
 protected $table = 'visitors';	
-protected $fillable = ['name', 'user_id'];
+protected $fillable = ['name', 'email', 'user_id'];
 	
 	
 }

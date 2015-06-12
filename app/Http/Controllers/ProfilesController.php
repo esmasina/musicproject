@@ -29,6 +29,7 @@ class ProfilesController extends Controller {
 	 */
 	public function show($name)
 	{
+		//Check if the user is existing
 		try
 		{
 		
@@ -39,21 +40,31 @@ class ProfilesController extends Controller {
 
 		catch (ModelNotFoundException $e)
 		{
-            return Redirect::home();
+        return Redirect::home();
 		}
+        //Get all required information
+        $visitor = Auth::user()->name;
+	    $email = Auth::user()->email;
+	    $owner = $user->id;
+        //What to do with user
 		if (Auth::guest())
 		{
 		return View::make('profiles.show')->withUser($user);
 		}
-	    else{
-	   $visitor = Auth::user()->name;
-	   $owner = $user->id;
+	    elseif($user->thisUser())
+	    {
+	    $visitors = Visitors::whereUser_id($owner)->distinct()->select('name')->get();
+	    return View::make('profiles.show')->withUser($user)->withVisitors($visitors);
+        }
+        else
+        {
+	    $values = array('name' => $visitor, 'email' => $email, 'user_id' => $owner);
+	    DB::table('visitors')->insert($values);
+        return View::make('profiles.show')->withUser($user);
        //$input = array($visitor, $owner);
        //Visitors::create($input);
-       $values = array('name' => $visitor,'user_id' => $owner);
-       DB::table('visitors')->insert($values);
-       return View::make('profiles.show')->withUser($user);
-	    }
+	   }
+	
 
 	}
 
