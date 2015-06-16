@@ -5,6 +5,9 @@ Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
 Route::get('contact', 'HomeController@contact');
 Route::post('contact', 'HomeController@storeConnect');
 
+Route::get('subscribe','HomeController@subscribe');
+Route::post('subscribe', 'HomeController@createconnect');
+
 #Registration
 Route::get('/register', 'RegController@create');
 Route::post('/register', ['as' => 'reg.store', 'uses' => 'RegController@store']);
