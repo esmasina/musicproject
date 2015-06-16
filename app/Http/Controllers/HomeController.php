@@ -78,8 +78,8 @@ $message->to('skaujla109@gmail.com', 'my name')->subject('contact request');
                       ] );
 
               //  return ('hi');
-                     return Redirect('subscribe')
-                      ->with('message', 'Thanks for subscribing!');
+                     return Redirect('/')
+                      ->with('message', 'Thanks for subscribing! A confirmation is sent to you on the provided email.');
 	    }
             
     //Return page with all users

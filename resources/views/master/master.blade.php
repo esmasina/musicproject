@@ -61,10 +61,18 @@
             @endif
           </ul>        
           </ul>
-        </div><!-- /.navbar-collapse -->
+          
+        </div><!-- /.navbar-collapse -->  
       </div><!-- /.container -->
     </nav><!-- /.navbar -->
 </div><!-- /.container-fluid -->
+
+
+          @if(Session::has('message'))
+                <div class="alert alert-info text-center">
+                 {{Session::get('message')}}
+                </div>
+            @endif
 @yield('content')
 <div class="container">
   <hr>
@@ -72,6 +80,8 @@
         
             <br />
               <h5>Cool footer</h5>
+            <a href="subscribe">
+                <button type="button" class="btn btn-info active"><span class="glyphicon glyphicon-play-circle"></span> Subscribe</button></a>
 </div>
     <hr>
 </div>
