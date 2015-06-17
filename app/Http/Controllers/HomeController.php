@@ -76,7 +76,7 @@ $message->to('skaujla109@gmail.com', 'my name')->subject('contact request');
                        'name' => 'required',
                         'email' => 'required|email',
                       ] );
-
+                
               //  return ('hi');
                      return Redirect('/')
                       ->with('message', 'Thanks for subscribing! A confirmation is sent to you on the provided email.');
