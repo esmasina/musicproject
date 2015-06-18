@@ -43,6 +43,8 @@
             <li class="divider-vertical "></li>
             <li class="navm"><a href="#">About</a></li>
             <li class="divider-vertical "></li>
+            <li class="navm"><a href="{{ url('contact') }}">Contact Us</a></li>
+            <li class="divider-vertical "></li>
             @if (Auth::guest())
             <li class="navm"><a href="/register">Register</a></li>
             <li class="divider-vertical "></li>

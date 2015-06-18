@@ -1,4 +1,4 @@
-You received a message from TODOParrot.com:
+You received a message from Musictouch.com:
 
 <p>
 Name: {{ $name }}

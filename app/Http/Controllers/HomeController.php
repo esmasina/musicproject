@@ -33,28 +33,21 @@ class HomeController extends Controller {
                     'message' => 'required',
                   ]           
                 );
-            $data=$request->all();
-             Mail::send('emails.contactResponse', $data, function($message) use ($data)
-                {
-//email 'From' field: Get users email add and name
-                    $message->from($data['email'] , $data['name']);
-//email 'To' field: cahnge this to emails that you want to be notified.                    
-$message->to('skaujla109@gmail.com', 'my name')->subject('contact request');
- 
-                });
- 
-               // return View::make('contact');  
-//            Mail::send('emails.contactResponse',
-//        array(
-//            'name' => $request->get('name'),
-//            'email' => $request->get('email'),
-//            'user_message' => $request->get('message')
-//        ), function($message)
-//    {
-//        $message->from('skaujla109@yahoo.com');
-//        $message->to('skaujla109@yahoo.com', 'Admin')->subject('TODOParrot Feedback');
-//    });
-//     
+         
+           $data=$request->all();
+            \Mail::send('emails.contactResponse',
+        array(
+            'name' => $request->get('name'),
+            'email' => $request->get('email'),
+            'user_message' => $request->get('message')
+                   
+        ), function($message) use($data)
+    {
+        $message->from($data['email']);
+        $message->replyTo($data['email']);
+        $message->to('skaujla109@gmail.com', 'Admin')->subject('Music Touch Feedback');
+    });
+     
                 return Redirect('contact')
                   ->with('message', 'Thanks for contacting us!');
 
