@@ -35,22 +35,29 @@ class User extends Model implements  AuthenticatableContract, CanResetPasswordCo
 	protected $hidden = ['password', 'remember_token'];
 
 
-	public function setPasswordAttribute($password)
+    //Hash password
+ 	public function setPasswordAttribute($password)
 	{
      $this->attributes['password'] = Hash::make($password);
 	}
 
 
-	//Create realationship beetwen users and profile table
-
+	//Create one-to-one realationship beetwen the users and the profile tables
 	public function profile()
 	{
 		return $this->hasOne('Profile');
 	}
 
+	public function uploadedfile()
+	{
+		return $this->hasMany('')->get();
+	}
 
+
+    //Functions that check if user
 	public function thisUser()
 	{
+		//If guest - do nothing
 		if (Auth::guest()) return false;
 
 		return Auth::user()->id == $this->id;

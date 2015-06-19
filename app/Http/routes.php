@@ -22,3 +22,5 @@ Route::resource('profile', 'ProfilesController', ['only' => ['show', 'edit', 'up
 Route::get('/{profile}', ['as' => 'profile', 'uses' => 'ProfilesController@show']);
 
 
+
+
